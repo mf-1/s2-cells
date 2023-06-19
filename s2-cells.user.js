@@ -8,14 +8,12 @@
 // @updateURL      https://raw.githubusercontent.com/nikolawannabe/s2-cells/master/s2-cells.meta.js
 // @downloadURL    https://github.com/nikolawannabe/s2-cells/raw/master/s2-cells.user.js
 // @description    IITC: Shows configurable S2 level cells on the map
-// @include        https://*.ingress.com/intel*
-// @include        http://*.ingress.com/intel*
-// @match          https://*.ingress.com/intel*
-// @match          http://*.ingress.com/intel*
-// @include        https://*.ingress.com/mission/*
-// @include        http://*.ingress.com/mission/*
-// @match          https://*.ingress.com/mission/*
-// @match          http://*.ingress.com/mission/*
+// @include        *://*.ingress.com/intel*
+// @include        *://*.ingress.com/mission/*
+// @include        *://intel.ingress.com/*
+// @match          *://*.ingress.com/intel*
+// @match          *://*.ingress.com/mission/*
+// @match          *://intel.ingress.com/*
 // @grant          none
 // ==/UserScript==
 // This plugin is a simple fork of the Regions plugin by Jonatkins
@@ -30,7 +28,7 @@ function wrapper(plugin_info)
   //PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
   //(leaving them in place might break the 'About IITC' page or break update checks)
   plugin_info.buildName = 's2-cells';
-  plugin_info.dateTimeVersion = '20180504.121800';
+  plugin_info.dateTimeVersion = '20230619.223700';
   plugin_info.pluginId = 's2-cells';
   //END PLUGIN AUTHORS NOTE
 
@@ -42,7 +40,7 @@ function wrapper(plugin_info)
   // SET THIS TO TRUE WHILE DEBUGGING
   window.plugin.showcells.debug = false;
 
-  window.plugin.showcells.storage = { lightCell: 17, darkCell: 14, lightColor: '#f5fffa', darkColor: '#3cb371', lightWidth: 1, darkWidth: 8};
+  window.plugin.showcells.storage = { "lightCell": 19, "darkCell": 14, "lightColor": "#808080", "darkColor": "#1a1a1a", "lightWidth": 1, "darkWidth": 1 };  
   window.plugin.showcells.storageKey = 'showcells-storage';
 
   // update the localStorage datas
@@ -70,8 +68,8 @@ function wrapper(plugin_info)
     var lightWidth = window.plugin.showcells.storage.lightWidth;
     var darkWidth = window.plugin.showcells.storage.darkWidth;
     if (lightCell == isNaN || darkCell == isNaN) {
-        window.plugin.showcells.storage.lightCell = 17;
-        lightCell = 17;
+        window.plugin.showcells.storage.lightCell = 19;
+        lightCell = 19;
         window.plugin.showcells.storage.darkCell = 14;
         darkCell = 14;
         window.plugin.showcells.saveStorage();
