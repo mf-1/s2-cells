@@ -1,12 +1,12 @@
 // ==UserScript==
 // @id             iitc-plugin-s2-cells@vib
 // @name           IITC plugin: Show Configurable S2 Cells
-// @author         vib+	Dragonsangel+nikolawannabe
+// @author         vib+	Dragonsangel+nikolawannabe + mf-1
 // @category       Layer
-// @version        0.1.11
-// @namespace      https://github.com/nikolawannabe/s2-cells
-// @updateURL      https://raw.githubusercontent.com/nikolawannabe/s2-cells/master/s2-cells.meta.js
-// @downloadURL    https://github.com/nikolawannabe/s2-cells/raw/master/s2-cells.user.js
+// @version        0.1.15
+// @namespace      https://github.com/mf-1/s2-cells
+// @updateURL      https://raw.githubusercontent.com/mf-1/s2-cells/master/s2-cells.meta.js
+// @downloadURL    https://github.com/mf-1/s2-cells/raw/master/s2-cells.user.js
 // @description    IITC: Shows configurable S2 level cells on the map
 // @include        *://*.ingress.com/intel*
 // @include        *://*.ingress.com/mission/*
@@ -40,7 +40,7 @@ function wrapper(plugin_info)
   // SET THIS TO TRUE WHILE DEBUGGING
   window.plugin.showcells.debug = false;
 
-  window.plugin.showcells.storage = { "lightCell": 19, "darkCell": 14, "lightColor": "#808080", "darkColor": "#1a1a1a", "lightWidth": 1, "darkWidth": 1 };  
+  window.plugin.showcells.storage = { "lightCell": 19, "darkCell": 14, "lightColor": "#808080", "darkColor": "#1a1a1a", "lightWidth": 1, "darkWidth": 1 };
   window.plugin.showcells.storageKey = 'showcells-storage';
 
   // update the localStorage datas
@@ -77,8 +77,8 @@ function wrapper(plugin_info)
     if (lightWidth == isNaN || darkWidth == isNaN) {
         window.plugin.showcells.storage.lightWidth = 1;
         lightWidth = 1;
-        window.plugin.showcells.storage.darkWidth = 8;
-        darkWidth = 8;
+        window.plugin.showcells.storage.darkWidth = 1;
+        darkWidth = 1;
         window.plugin.showcells.saveStorage();
     }
     var dialogHtml = 
@@ -102,7 +102,7 @@ function wrapper(plugin_info)
         width:'auto',
         buttons:{
           'Reset to Defaults': function() {
-                window.plugin.showcells.storage = { lightCell: 17, darkCell: 14, lightColor: '#f5fffa', darkColor: '#3cb371', lightWidth: 1, darkWidth: 8};
+                window.plugin.showcells.storage = { "lightCell": 19, "darkCell": 14, "lightColor": "#808080", "darkColor": "#1a1a1a", "lightWidth": 1, "darkWidth": 1 };
                 window.plugin.showcells.saveStorage();
                 window.plugin.showcells.update();
                 return;
